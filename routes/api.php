@@ -15,4 +15,10 @@ use App\Http\Controllers\API\CommentController;
 |
 */
 
-Route::apiResource('comments', CommentController::class);
+Route::resource('comments', CommentController::class)->only([
+    'index', 'show'
+]);
+  
+Route::resource('comments', CommentController::class)->only([
+    'store', 'update', 'destroy'
+])->middleware('jwt');
